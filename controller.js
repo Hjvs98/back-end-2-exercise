@@ -23,14 +23,17 @@ module.exports = {
     houseId++;
   },
 
-  // updateHouse: (req, res) => {
-  //   let { id } = req.params;
-  //   let { type } = req.body;
-  //   let index = house.findIndex((elem) => +elem.id === +id);
-  //   if (type === "plus") {
-  //     res.status(200).send(house[index].price + 10000);
-  //   } else if (type === "minus") {
-  //     res.status(200).send(house[index].price + 10000);
-  //   }
-  // },
+  updateHouse: (req, res) => {
+    let { id } = req.params;
+    let { type } = req.body;
+    let index = house.findIndex((elem) => +elem.id === +id);
+
+    if (type === "plus") {
+      house[index].price += 10000;
+      res.status(200).send(house);
+    } else {
+      house[index].price -= 10000;
+      res.status(200).send(house);
+    }
+  },
 };
